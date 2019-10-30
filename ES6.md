@@ -546,3 +546,55 @@ console.log(Object.is(+0,-0)); //false
 console.log(Object.is(NaN,NaN)); //true
 ```
 
+## Object.assign( )合并对象
+
+```
+// 数组合并
+
+let a = {
+    key: "Hello",
+    web: "World"
+}
+let b = {
+    Day: "Hello",
+    web: "Today"
+}
+
+let c = Object.assign(a,b);
+console.log(c);						// { key: 'Hello', web: 'Today', Day: 'Hello' }
+```
+
+
+
+## Symbol在对象中的作用
+
+```
+let Hello = Symbol();
+let World = {
+    [Hello] : "Hello World!!!"
+}
+
+console.log(World[Hello]);          // Hello World!!!
+Hello[Hello] = '你好';
+console.log(World[Hello]);          // Hello World!!!
+
+
+Symbol对象元素的保护作用
+在对象中有很多值，但是循环输出时，并不希望全部输出，那我们就可以使用Symbol进行保护。
+
+let item = Symbol();
+
+let Hello = {
+    [item]: "Hello",
+    list: "List",
+    web: "Web"
+}
+
+for(let i in Hello){
+    console.log(Hello[i]);                          // List    Web
+}
+console.log(Hello);                                 // { list: 'List', web: 'Web', [Symbol()]: 'Hello' }
+
+
+```
+
